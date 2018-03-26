@@ -42,6 +42,7 @@ class Counter extends Component {
   }
 }
 
+// global state
 const mapStateToProps = state => {
   return {
     ctr: state.ctr.counter,

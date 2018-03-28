@@ -1,4 +1,5 @@
 import * as actionTypes from './../actions/actionTypes';
+import { updateObject } from './../utility';
 
 const initialState = {
   ingredients: null,
@@ -17,15 +18,27 @@ const INGREDIENT_PRICES = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_INGREDIENT:
-      // 處理 deep clone issue
-      return {
-        ...state,
-        ingredients: {
-          ...state.ingredients,
-          [action.ingredientName]: state.ingredients[action.ingredientName] + 1
-        },
+      // 使用 utility.js 有比較清楚嗎？
+      const updatedIngredient = {
+        [action.ingredientName]: state.ingredients[action.ingredientName] + 1
+      };
+      const updatedIngredients = updateObject(
+        state.ingredients,
+        updatedIngredient
+      );
+      const updatedState = {
+        ingredients: updatedIngredients,
         totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
       };
+
+      return updateObject(state, updatedState);
+
+    // 處理 deep clone issue
+    // return {
+    //   ...state,
+    //   ingredients: updatedIngredients,
+    //   totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    // };
     case actionTypes.REMOVE_INGREDIENT:
       return {
         ...state,

@@ -14,31 +14,32 @@ const INGREDIENT_PRICES = {
   bacon: 0.7
 };
 
+const addIngredient = (state, action) => {
+  const updatedIngredient = {
+    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
+  };
+  const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
+  const updatedState = {
+    ingredients: updatedIngredients,
+    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+  };
+
+  return updateObject(state, updatedState);
+};
+
 // SYNC
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_INGREDIENT:
       // 使用 utility.js 有比較清楚嗎？
-      const updatedIngredient = {
-        [action.ingredientName]: state.ingredients[action.ingredientName] + 1
-      };
-      const updatedIngredients = updateObject(
-        state.ingredients,
-        updatedIngredient
-      );
-      const updatedState = {
-        ingredients: updatedIngredients,
-        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
-      };
+      return addIngredient(state, action);
 
-      return updateObject(state, updatedState);
-
-    // 處理 deep clone issue
-    // return {
-    //   ...state,
-    //   ingredients: updatedIngredients,
-    //   totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
-    // };
+      // 處理 deep clone issue
+      // return {
+      //   ...state,
+      //   ingredients: updatedIngredients,
+      //   totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+      // };
     case actionTypes.REMOVE_INGREDIENT:
       return {
         ...state,

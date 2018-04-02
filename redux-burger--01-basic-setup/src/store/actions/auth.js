@@ -22,7 +22,7 @@ export const authFail = error => {
   };
 };
 
-export const auth = (email, password) => {
+export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
     const authData = {
@@ -32,13 +32,17 @@ export const auth = (email, password) => {
     };
 
     const apiKey = 'AIzaSyAwfiYGYQ8IjAQR4fWwGqRkgG0XrAOlyIQ';
-    const endpoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${apiKey}`;
+    let endpoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${apiKey}`;
+
+    if (!isSignup) {
+      endpoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${apiKey}`;
+    }
 
     axios
       .post(endpoint, authData)
       .then(response => {
         console.log(response.data);
-        dispatch(authSuccess());
+        dispatch(authSuccess(response.data));
       })
       .catch(err => {
         // err 會由 firebase 提供完整的錯誤訊息

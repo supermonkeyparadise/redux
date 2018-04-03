@@ -47,8 +47,8 @@ export const auth = (email, password, isSignup) => {
       })
       .catch(err => {
         // err 會由 firebase 提供完整的錯誤訊息
-        console.log(err);
-        dispatch(authFail(err));
+        console.dir(err);
+        dispatch(authFail(err.response.data.error));
       });
   };
 };

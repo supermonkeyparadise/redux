@@ -23,6 +23,20 @@ export const authFail = error => {
   };
 };
 
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
+};
+
+export const checkAuthTimeout = expirationTime => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(logout());
+    }, Number(expirationTime) * 1000);
+  };
+};
+
 export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
@@ -44,6 +58,8 @@ export const auth = (email, password, isSignup) => {
       .then(response => {
         console.log(response.data);
         dispatch(authSuccess(response.data.idToken, response.data.localId));
+        // 檢查登入是否過期
+        dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch(err => {
         // err 會由 firebase 提供完整的錯誤訊息

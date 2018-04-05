@@ -14,7 +14,11 @@ import authReducer from './store/reducers/auth';
 
 import registerServiceWorker from './registerServiceWorker';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// 只在測試環境使用 redux devTools，避免 user 太容易看到資料的結構
+const composeEnhancers =
+  process.env.NODE_ENV === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
 
 const rootReducer = combineReducers({
   burgerBuilder: burgerBuilderReducer,

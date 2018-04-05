@@ -4,7 +4,8 @@ import { updateObject } from './../utility';
 const initialState = {
   ingredients: null,
   totalPrice: 4,
-  error: false
+  error: false,
+  building: false
 };
 
 const INGREDIENT_PRICES = {
@@ -21,7 +22,8 @@ const addIngredient = (state, action) => {
   const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
   const updatedState = {
     ingredients: updatedIngredients,
-    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+    building: true
   };
 
   return updateObject(state, updatedState);
@@ -34,12 +36,12 @@ const reducer = (state = initialState, action) => {
       // 使用 utility.js 有比較清楚嗎？
       return addIngredient(state, action);
 
-      // 處理 deep clone issue
-      // return {
-      //   ...state,
-      //   ingredients: updatedIngredients,
-      //   totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
-      // };
+    // 處理 deep clone issue
+    // return {
+    //   ...state,
+    //   ingredients: updatedIngredients,
+    //   totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    // };
     case actionTypes.REMOVE_INGREDIENT:
       return {
         ...state,
@@ -47,7 +49,8 @@ const reducer = (state = initialState, action) => {
           ...state.ingredients,
           [action.ingredientName]: state.ingredients[action.ingredientName] - 1
         },
-        totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+        totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
+        building: true
       };
     case actionTypes.SET_INGREDIENTS:
       return {
@@ -59,7 +62,8 @@ const reducer = (state = initialState, action) => {
           meat: action.ingredients.meat
         },
         totalPrice: 4,
-        error: false
+        error: false,
+        building: false
       };
     case actionTypes.FETCH_INGREDIENTS_FAILED:
       return {

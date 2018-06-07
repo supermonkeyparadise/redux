@@ -1,0 +1,10 @@
+測試工具：
+    Jest
+
+執行 App.test.js 測試：
+    yarn run test
+
+因為要測試 Redux，所以要安裝相關 library
+    yarn add redux react-redux
+
+    

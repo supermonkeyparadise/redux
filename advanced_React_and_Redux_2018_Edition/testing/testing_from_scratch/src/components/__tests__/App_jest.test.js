@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import App from './../App';
 
-it('shows a comment box', () => {
+it('shows a comment box(jest version)', () => {
   // document 由 JSDOM 產生，模擬 browser
   const div = document.createElement('div');
 

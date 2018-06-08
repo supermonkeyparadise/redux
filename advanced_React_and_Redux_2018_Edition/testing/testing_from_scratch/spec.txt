@@ -35,4 +35,6 @@ step 6: [ 每個元件必須有自己的 test.js ]
     父元件呼叫子元件的測試，不要直接深入子元件的內容，以減少相依性
 
 step 7: src 下，建立 setupTests.js ===> Enzyme 設定檔
+        使用 Enzyme 是為了使測試 react 更加方便
+
 

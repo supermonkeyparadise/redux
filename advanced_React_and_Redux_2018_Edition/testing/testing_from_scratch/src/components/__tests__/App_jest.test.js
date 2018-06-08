@@ -14,7 +14,7 @@ it('shows a comment box(jest version)', () => {
   //   console.log(div.innerHTML);
   
   // [solution 1] not best，不應該直接測試子元件的功能！！
-  expect(div.innerHTML).toContain('Comment Box');
+  // expect(div.innerHTML).toContain('Comment Box');
 
   // cleanup after our test run
   // remove div from document

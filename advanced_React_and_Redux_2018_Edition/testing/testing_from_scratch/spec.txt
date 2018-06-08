@@ -1,6 +1,7 @@
 step 1:
     刪除自動產生的 src folder，重新來過
 
+
 step 2: [ 建立測試目錄結構 ]
     create the src folder
         create index.js  ===> 程式進入點
@@ -9,9 +10,21 @@ step 2: [ 建立測試目錄結構 ]
             create CommentBox.js
             create CommentList.js
 
+
 step 3: [ 執行 app  ]
     yarn run start
 
-step 4:
+
+step 4: [ 建立合法的測試檔案名稱 ]
+    folder: __tests__
+    file: .spec.js or .test.js
+
+    __tests__/App.test.js ===> 其實可以不用 .test.js 結尾，因為它已經在 __tests__ folder 下了
+
+
+step 5: [ 欺騙 react 它目前是在 Browser 內執行 ]
+    react expects to be executed inside the browser
+    JSDOM ===> Simulates how a browser behaves
+        
 
 

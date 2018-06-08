@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './../App';
+import App from 'components/App';
 
 it('shows a comment box(jest version)', () => {
   // document 由 JSDOM 產生，模擬 browser

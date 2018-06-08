@@ -37,4 +37,10 @@ step 6: [ 每個元件必須有自己的 test.js ]
 step 7: src 下，建立 setupTests.js ===> Enzyme 設定檔
         使用 Enzyme 是為了使測試 react 更加方便
 
+step 8: [ 使用絕對路徑 import ] 使用相對路徑 import 的話，搬移檔案後，import 就會錯
+        create .env file
+            NODE_PATH=src/
+
+
+
 

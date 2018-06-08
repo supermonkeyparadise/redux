@@ -1,0 +1,17 @@
+step 1:
+    刪除自動產生的 src folder，重新來過
+
+step 2: [ 建立測試目錄結構 ]
+    create the src folder
+        create index.js  ===> 程式進入點
+        create components folder
+            create App.js
+            create CommentBox.js
+            create CommentList.js
+
+step 3: [ 執行 app  ]
+    yarn run start
+
+step 4:
+
+

@@ -1,3 +1,8 @@
+因為要測試 Redux，所以要安裝相關 library
+    yarn add redux react-redux
+    yarn add --dev enzyme enzyme-adapter-react-16 ===> 版本要依據 react 做變更！！
+ 
+
 step 1:
     刪除自動產生的 src folder，重新來過
 
@@ -26,5 +31,8 @@ step 5: [ 欺騙 react 它目前是在 Browser 內執行 ]
     react expects to be executed inside the browser
     JSDOM ===> Simulates how a browser behaves
         
+step 6: [ 每個元件必須有自己的 test.js ]    
+    父元件呼叫子元件的測試，不要直接深入子元件的內容，以減少相依性
 
+step 7: src 下，建立 setupTests.js ===> Enzyme 設定檔
 

@@ -12,6 +12,8 @@ it('shows a comment box', () => {
   // Looks inside the div
   // and checks to see if the CommentBox is in there
   //   console.log(div.innerHTML);
+  
+  // [solution 1] not best，不應該直接測試子元件的功能！！
   expect(div.innerHTML).toContain('Comment Box');
 
   // cleanup after our test run

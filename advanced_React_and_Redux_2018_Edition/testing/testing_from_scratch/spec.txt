@@ -50,6 +50,8 @@ step 9: enzyme shallow & full DOM 的差別？
 
 step 10: simulate Events
 
+step 11: CheerioWrapper likes JQuery
+
 
 
 

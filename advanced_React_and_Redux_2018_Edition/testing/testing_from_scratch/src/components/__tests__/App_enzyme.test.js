@@ -6,6 +6,7 @@ import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
 
 let wrapped;
+// Shallow API
 beforeEach(() => {
   wrapped = shallow(<App />);
 });

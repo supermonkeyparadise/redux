@@ -3,10 +3,19 @@ import { mount } from 'enzyme';
 
 import CommentBox from 'components/CommentBox';
 
+let wrapped;
+
+beforeEach(() => {
+  wrapped = mount(<CommentBox />);
+});
+
+// cleanup DOM
+afterEach(() => {
+  wrapped.unmount();
+});
+
 // Full DOM API
 it('has a text area and a button', () => {
-  const wrapped = mount(<CommentBox />);
-
   //   console.log('### check textarea:', wrapped.find('textarea'));
   //   console.log('### check button:', wrapped.find('button'));
 

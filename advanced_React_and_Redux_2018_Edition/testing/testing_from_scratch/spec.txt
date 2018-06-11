@@ -44,8 +44,11 @@ step 8: [ 使用絕對路徑 import ] 使用相對路徑 import 的話，搬移�
         create .env file
             NODE_PATH=src/
 
-            
+
 step 9: enzyme shallow & full DOM 的差別？
+
+
+step 10: simulate Events
 
 
 

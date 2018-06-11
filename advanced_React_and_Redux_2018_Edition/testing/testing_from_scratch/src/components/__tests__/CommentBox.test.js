@@ -23,17 +23,31 @@ it('has a text area and a button', () => {
   expect(wrapped.find('button').length).toEqual(1);
 });
 
-// 模擬事件
-it('has a text area that users can type in', () => {
-  // step 1: 模擬事件
-  wrapped.find('textarea').simulate('change', {
-    // 觸發事件後的 event
-    target: { value: 'new comment' }
+describe('the text area', () => {
+  beforeEach(() => {
+    // step 1: 模擬事件
+    wrapped.find('textarea').simulate('change', {
+      // 觸發事件後的 event
+      target: { value: 'new comment' }
+    });
+
+    // step 2: 更新元件
+    // forcing component update
+    wrapped.update();
   });
 
-  // step 2: 更新元件
-  // forcing component update
-  wrapped.update();
+  // 模擬 textarea change 事件
+  it('has a text area that users can type in', () => {
+    expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
+  });
 
-  expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
+  it('when form is submitted, text area gets emptyied', () => {
+    expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
+
+    // step 2: 模擬 form submit
+    wrapped.find('textarea').simulate('submit');
+    wrapped.update();
+
+    expect(wrapped.find('textarea').prop('value')).toEqual('');
+  });
 });

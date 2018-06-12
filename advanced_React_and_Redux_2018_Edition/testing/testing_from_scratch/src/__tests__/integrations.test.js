@@ -35,13 +35,23 @@ it('can fetch a list of commemts and display them', done => {
   // find the 'fetchCommemts' button and click it
   wrapped.find('.fetch-comments').simulate('click');
 
-  // tiny little pause
-  setTimeout(() => {
+  // tiny little pause[ solution 1 ]
+  //   setTimeout(() => {
+  //     wrapped.update();
+
+  //     // Expect to find a list of commemts! 500 Li's
+  //     expect(wrapped.find('li').length).toEqual(3);
+
+  //     done();
+  //   }, 100);
+
+  // [ best solution ]
+  moxios.wait(() => {
     wrapped.update();
 
     // Expect to find a list of commemts! 500 Li's
     expect(wrapped.find('li').length).toEqual(3);
 
     done();
-  }, 100);
+  });
 });

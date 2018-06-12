@@ -54,7 +54,7 @@ step 10: simulate Events
 step 11: CheerioWrapper likes JQuery
 
 step 12: 在整合測試時，利用 moxios 回傳(假)資料給 axios
-
+        使用 moxios.wait 等待 moxios 回傳
 
 
 

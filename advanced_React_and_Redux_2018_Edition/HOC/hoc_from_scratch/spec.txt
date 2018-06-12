@@ -1,2 +1,5 @@
 兩層式 Route
 
+檔名小寫表示 export function
+檔名大寫表示 export class
+
